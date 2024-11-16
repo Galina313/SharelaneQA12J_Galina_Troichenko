@@ -17,12 +17,9 @@ describe("Sharelane registration tests", () => {
 });
 
   it("Positive registration in Sharelane", async function () {
-    let driver = await new Builder().forBrowser(Browser.EDGE).build();
-    await driver.manage().window().maximize();
     await driver.get("https://www.sharelane.com/cgi-bin/register.py");
     const continueButton = await driver.findElement(
-        By.css('input[value="Continue"]')
-      );
+        By.css('input[value="Continue"]'));
     const zipCode = await driver.findElement(By.name("zip_code"));
     await zipCode.sendKeys("94118");
     await continueButton.click();
@@ -40,11 +37,8 @@ describe("Sharelane registration tests", () => {
   });
 
   it("Negative registration in Sharelane", async function () {
-    let driver = await new Builder().forBrowser(Browser.EDGE).build();
-    await driver.manage().window().maximize();
     await driver.get("https://www.sharelane.com/cgi-bin/register.py");
-    const continueButton = await driver.findElement(
-      By.css('input[value="Continue"]'));
+    const continueButton = await driver.findElement(By.css('input[value="Continue"]'));
     const zipCode = await driver.findElement(By.name("zip_code"));
     await zipCode.sendKeys("94118");
     await continueButton.click();
@@ -63,8 +57,6 @@ describe("Sharelane registration tests", () => {
   });
 
   it("Positive login in Sharelane", async function () {
-    let driver = await new Builder().forBrowser(Browser.EDGE).build();
-    await driver.manage().window().maximize();
     await driver.get("https://sharelane.com/cgi-bin/main.py");
     await driver.findElement(By.name("email")).sendKeys("james_watson@833.02.sharelane.com");
     await driver.findElement(By.name("password")).sendKeys("1111");
@@ -74,4 +66,5 @@ describe("Sharelane registration tests", () => {
     expect(await welcomeMessage.getText()).to.equal('Hello James');
   });
 
+  
 
